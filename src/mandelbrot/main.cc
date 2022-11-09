@@ -15,7 +15,7 @@
 
 #include "include/utils.h"
 
-constexpr std::pair glfw_winsize = {500, 500};
+constexpr std::pair glfw_winsize = {1000, 1000};
 
 int main() {
     if (!glfwInit()) std::exit(1);
@@ -30,7 +30,7 @@ int main() {
     glfwMakeContextCurrent(window);
     glfwWindowHint(GLFW_SAMPLES, 8);
 
-    if (glewInit()) {
+    if (!glewInit()) {
         glfwTerminate();
         std::exit(1);
     }

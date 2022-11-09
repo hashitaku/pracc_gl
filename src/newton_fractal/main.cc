@@ -30,7 +30,7 @@ int main() {
     glfwMakeContextCurrent(window);
     glfwWindowHint(GLFW_SAMPLES, 8);
 
-    if (glewInit()) {
+    if (!glewInit()) {
         glfwTerminate();
         std::exit(1);
     }
@@ -120,6 +120,7 @@ int main() {
         glUseProgram(program);
         int winsize[2];
         glfwGetWindowSize(window, &winsize[0], &winsize[1]);
+        glViewport(0, 0, winsize[0], winsize[1]);
         glUniform2f(glGetUniformLocation(program, "winsize"), winsize[0], winsize[1]);
         glUniform1f(glGetUniformLocation(program, "scale"), scale / detail_scale);
 
